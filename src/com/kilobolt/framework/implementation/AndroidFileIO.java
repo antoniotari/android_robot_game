@@ -15,7 +15,8 @@ import android.preference.PreferenceManager;
 
 import com.kilobolt.framework.FileIO;
 
-public class AndroidFileIO implements FileIO {
+public class AndroidFileIO implements FileIO 
+{
 	Context context;
     AssetManager assets;
     String externalStoragePath;
@@ -25,27 +26,28 @@ public class AndroidFileIO implements FileIO {
         this.assets = context.getAssets();
         this.externalStoragePath = Environment.getExternalStorageDirectory()
                 .getAbsolutePath() + File.separator;
-        
- 
-    
     }
 
     @Override
-    public InputStream readAsset(String file) throws IOException {
+    public InputStream readAsset(String file) throws IOException 
+    {
         return assets.open(file);
     }
 
     @Override
-    public InputStream readFile(String file) throws IOException {
+    public InputStream readFile(String file) throws IOException 
+    {
         return new FileInputStream(externalStoragePath + file);
     }
 
     @Override
-    public OutputStream writeFile(String file) throws IOException {
+    public OutputStream writeFile(String file) throws IOException 
+    {
         return new FileOutputStream(externalStoragePath + file);
     }
     
-    public SharedPreferences getSharedPref() {
+    public SharedPreferences getSharedPref()
+    {
     	return PreferenceManager.getDefaultSharedPreferences(context);
     }
 }
